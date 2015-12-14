@@ -1,6 +1,6 @@
 # Bookstore 
 
-The bookstore app contains samples demonstrating how web services can be secured using 
+The bookstore app is an Eclipse project of type Dynamic web application. It can be checked out and imported directly into Eclipse IDE. It contains samples demonstrating how web services can be secured using 
 
 	1. HTTP BASIC Authentication
 	2. Custom Token Based Authentication v 1.0
@@ -10,6 +10,8 @@ The bookstore app contains samples demonstrating how web services can be secured
 as discussed in the Techgig webinar refer the following webpage for the same.
 	
 		http://www.techgig.com/webinar/Building-Secure-RESTful-Web-Services-835
+
+To execute the project,chechout and import in Eclipse and then Run As->Run on Server (tested on Tomcat).
 
 The code uses Jax-RS RI annotations along with Apache Jersey. The code should work with any other JAX-RS compliant libraries like RestEasy or Apache CXF with minor changes.
 
