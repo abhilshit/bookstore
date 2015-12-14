@@ -30,7 +30,7 @@ The following code snippet creates a NameBinding for @SecuredWithCustom3 annotat
 
 The @SecuredWithCustom3 can be added on top of a Filter class and a web resource so that the filter executes whenever the resource is accessed
 
-Refer CustomAuthFilter3.java and 
+Refer CustomAuthFilter3.java and getBooksById3() method of BookService.java
 	
 	@SecuredWithCustom3
 	@Provider
@@ -154,18 +154,18 @@ It can be implemented in following way
 1. Issue client certificates to your users and make them add it to their key stores. 
 2. Generate Client Certificates and add the Client’s Public Certificate to the Server’s Trust store
 	
-	keytool -genkeypair -alias serverkey -keyalg RSA -dname "CN=Web Server,OU=Development,O=ABC Corp,L=XYZ S=FL,C=US" 	-keypass password -keystore 	server.jks -storepass password
+		keytool -genkeypair -alias serverkey -keyalg RSA -dname "CN=Web Server,OU=Development,O=ABC Corp,L=XYZ S=FL,C=US" 	-keypass password -keystore 	server.jks -storepass password
 	 
-	 keytool -genkeypair -alias clientkey -keyalg RSA -dname "CN=client,OU=Development,O=ABC Corp,L=XYZ,S=FL,C=US" 	-keypass password -storepass password 	-keystore client.jks
+	 	keytool -genkeypair -alias clientkey -keyalg RSA -dname "CN=client,OU=Development,O=ABC Corp,L=XYZ,S=FL,C=US" 	-keypass password -storepass password 	-keystore client.jks
 	
-	 keytool -exportcert -alias clientkey -file client-public.cer -keystore client.jks -storepass password keytool 	-importcert -keystore server.jks -alias clientcert -file client-public.cer -storepass password -noprompt 
+	 	keytool -exportcert -alias clientkey -file client-public.cer -keystore client.jks -storepass password keytool 	-importcert -keystore server.jks -alias clientcert -file client-public.cer -storepass password -noprompt 
 	 
 	# view the contents of the keystore (use -v for verbose output) 
 	keytool -list -keystore server.jks -storepass password
 3. Ask clients to store server’s public certificate to their trust store.
 4. Export the Server’s Public Certificate and Import it in to the Client’s Keystore
 
-	keytool -exportcert -alias serverkey -file server-public.cer -keystore server.jks -storepass password 
+		keytool -exportcert -alias serverkey -file server-public.cer -keystore server.jks -storepass password 
 	keytool -importcert -keystore client.jks -alias servercert -file server-public.cer -storepass password -noprompt 
 	
 	# view the contents of the keystore (use -v for verbose output) 
