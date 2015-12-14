@@ -160,20 +160,20 @@ It can be implemented in following way
 	
 	 	keytool -exportcert -alias clientkey -file client-public.cer -keystore client.jks -storepass password keytool 	-importcert -keystore server.jks -alias clientcert -file client-public.cer -storepass password -noprompt 
 	 
-	# view the contents of the keystore (use -v for verbose output) 
-	keytool -list -keystore server.jks -storepass password
+	To view the contents of the keystore (use -v for verbose output) 
+		keytool -list -keystore server.jks -storepass password
 3. Ask clients to store server’s public certificate to their trust store.
 4. Export the Server’s Public Certificate and Import it in to the Client’s Keystore
 
 		keytool -exportcert -alias serverkey -file server-public.cer -keystore server.jks -storepass password 
 	keytool -importcert -keystore client.jks -alias servercert -file server-public.cer -storepass password -noprompt 
 	
-	# view the contents of the keystore (use -v for verbose output) 
-	keytool -list -keystore client.jks -storepass password
+	To view the contents of the keystore (use -v for verbose output) 
+		keytool -list -keystore client.jks -storepass password
 5. Configure the server to ask for client certificates while requesting a resource URI
 6. Typical tomcat server.xml HTTP connector configuuration
 
-	<Connector clientAuth="true" port="8443" minSpareThreads="5" maxSpareThreads="75" enableLookups="true" 	disableUploadTimeout="true" acceptCount="100" maxThreads="200" scheme="https" secure="true" SSLEnabled="true" 	keystoreFile="/Users/mporges/Desktop/tomcat-ssl/final/server.jks" keystoreType="JKS" keystorePass="password" 	truststoreFile="/Users/mporges/Desktop/tomcat-ssl/final/server.jks" truststoreType="JKS" truststorePass="password" 	SSLVerifyClient="require" SSLEngine="on" SSLVerifyDepth="2" sslProtocol="TLS" />
+		<Connector clientAuth="true" port="8443" minSpareThreads="5" maxSpareThreads="75" enableLookups="true" 		disableUploadTimeout="true" acceptCount="100" maxThreads="200" scheme="https" secure="true" SSLEnabled="true" 		keystoreFile="/Users/mporges/Desktop/tomcat-ssl/final/server.jks" keystoreType="JKS" keystorePass="password" 		truststoreFile="/Users/mporges/Desktop/tomcat-ssl/final/server.jks" truststoreType="JKS" 		truststorePass="password" 	SSLVerifyClient="require" SSLEngine="on" SSLVerifyDepth="2" sslProtocol="TLS" />
 
 #Implementing OAuth 1a and OAuth 2
 
